@@ -22,6 +22,19 @@ const htmlPluginEntries = templateFiles.map((template) => new HTMLWebpackPlugin(
   template: path.resolve(environment.paths.source, template),
   favicon: path.resolve(environment.paths.source, 'images', 'favicon.ico'),
 }));
+module.exports = {
+  entry: ['babel-polyfill', './test.js'],
+
+  output: {
+    filename: 'bundle.js'       
+  },
+
+  module: {
+    loaders: [
+      { test: /\.jsx?$/, loader: 'babel', }
+    ]
+  }
+};
 
 module.exports = {
   entry: {
